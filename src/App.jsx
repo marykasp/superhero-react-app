@@ -11,8 +11,8 @@ const tabData = [
 
 function App() {
   const [name, setName] = useState("");
-  const [superheroInfo, setSuperheroInfo] = useState([]);
-  console.log(superheroInfo);
+  const [allSuperheros, setAllSuperheros] = useState([]);
+  const [superheroInfo, setSuperheroInfo] = useState(null);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -26,7 +26,8 @@ function App() {
       const data = await response.json();
 
       if (data.response === "success") {
-        setSuperheroInfo(data.results);
+        setAllSuperheros(data.results);
+        setSuperheroInfo(data.results[0]);
       }
     } catch (err) {
       console.log(err);
