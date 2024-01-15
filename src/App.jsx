@@ -4,25 +4,52 @@ import Batman from "./assets/thumbnail-batman.jpg";
 import { fetchHero } from "./utils/fetchHeros";
 
 const tabData = [
-  { id: 1, label: "powerstats" },
-  { id: 2, label: "biography" },
-  { id: 3, label: "appearance" },
-  { id: 4, label: "connections" },
+  {
+    id: 1,
+    label: "powerstats",
+    titles: [
+      "intelligence",
+      "strength",
+      "speed",
+      "durability",
+      "power",
+      "combat",
+    ],
+  },
+  {
+    id: 2,
+    label: "biography",
+    titles: [
+      "full name",
+      "alert-egos",
+      "aliases",
+      "place-of-birth",
+      "first-apperance",
+      "publisher",
+    ],
+  },
+  {
+    id: 3,
+    label: "appearance",
+    titles: ["gender", "race", "height", "weight", "eye-color", "hair-color"],
+  },
 ];
 
 function App() {
   const [name, setName] = useState("");
   const [allSuperheros, setAllSuperheros] = useState([]);
   const [superheroInfo, setSuperheroInfo] = useState(null);
-  console.log(superheroInfo);
 
   useEffect(() => {
-    (async () => {
-      const data = await fetchHero("batman");
-      console.log(data);
-
-      setSuperheroInfo(data.results[0]);
-    })();
+    console.log("Use Effect is being invoked");
+    fetchHero("batman")
+      .then((data) => {
+        // console.log(data);
+        setSuperheroInfo(data.results[0]);
+      })
+      .catch(() => {
+        console.log("Error occurred");
+      });
   }, []);
 
   const handleSubmit = async (e) => {
@@ -66,7 +93,7 @@ function App() {
               <h2 className="name">Batman</h2>
 
               {/* tabs */}
-              <Tabs tabs={tabData} />
+              {superheroInfo && <Tabs tabs={tabData} hero={superheroInfo} />}
             </div>
           </div>
         </div>

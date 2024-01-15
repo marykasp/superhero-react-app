@@ -1,8 +1,10 @@
 import { useState } from "react";
 import Tab from "./Tab";
+import TabContent from "./TabContent";
 
-const Tabs = ({ tabs }) => {
+const Tabs = ({ tabs, hero }) => {
   const [activeTab, setActiveTab] = useState(1);
+  console.log(hero.powerstats);
 
   const handleTabClick = (id) => {
     setActiveTab(id);
@@ -10,7 +12,7 @@ const Tabs = ({ tabs }) => {
 
   return (
     <div className="tabs-container">
-      <div className="tabs">
+      <div className="tabs-header">
         {tabs.map((tab) => (
           <Tab
             key={tab.id}
@@ -20,51 +22,17 @@ const Tabs = ({ tabs }) => {
           />
         ))}
       </div>
+
       {/* another component that will be passed down the final data from the search */}
       <div className="tabs-body">
-        {/* powerstats tab content*/}
-        <ul
-          className={`tab-content powerstats ${
-            activeTab === 1 ? "active" : ""
-          }`}
-        >
-          <li>
-            <div>
-              <span>intelligence</span>
-            </div>
-            <span>100</span>
-          </li>
-          <li>
-            <div>
-              <span>strength</span>
-            </div>
-            <span>26</span>
-          </li>
-          <li>
-            <div>
-              <span>speed</span>
-            </div>
-            <span>27</span>
-          </li>
-          <li>
-            <div>
-              <span>durability</span>
-            </div>
-            <span>50</span>
-          </li>
-          <li>
-            <div>
-              <span>power</span>
-            </div>
-            <span>47</span>
-          </li>
-          <li>
-            <div>
-              <span>combat</span>
-            </div>
-            <span>100</span>
-          </li>
-        </ul>
+        {tabs.map((tab) => (
+          <TabContent
+            content={tab.titles}
+            stats={hero}
+            key={`${tab.id}-content`}
+            isActive={tab.id === activeTab}
+          />
+        ))}
       </div>
     </div>
   );
