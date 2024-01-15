@@ -1,0 +1,15 @@
+.tab {
+  cursor: pointer;
+}
+
+.tab.active {
+  color: red;
+}
+
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
+}

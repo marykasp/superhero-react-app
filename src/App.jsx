@@ -1,8 +1,18 @@
 import { useState } from "react";
+import Tabs from "./components/Tabs";
+import Batman from "./assets/thumbnail-batman.jpg";
+
+const tabData = [
+  { id: 1, label: "powerstats" },
+  { id: 2, label: "biography" },
+  { id: 3, label: "appearance" },
+  { id: 4, label: "connections" },
+];
 
 function App() {
   const [name, setName] = useState("");
   const [superheroInfo, setSuperheroInfo] = useState([]);
+  console.log(superheroInfo);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -46,11 +56,18 @@ function App() {
           </form>
         </div>
         {/* end of app header */}
-        <div className="show-container">
-          <div className="content">
+        <div className="show-hero-container">
+          <div className="hero-content">
             {/* thumbnail */}
-            <div className="content-thumbnail">
-              <img src="images/thumbnail-batman.jpg" alt="" />
+            <div className="hero-thumbnail">
+              <img src={Batman} alt="batman" />
+            </div>
+
+            <div className="hero-info-list">
+              <h2 className="name">Batman</h2>
+
+              {/* tabs */}
+              <Tabs tabs={tabData} />
             </div>
           </div>
         </div>
