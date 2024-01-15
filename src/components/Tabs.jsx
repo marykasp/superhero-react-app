@@ -4,7 +4,6 @@ import TabContent from "./TabContent";
 
 const Tabs = ({ tabs, hero }) => {
   const [activeTab, setActiveTab] = useState(1);
-  console.log(hero.powerstats);
 
   const handleTabClick = (id) => {
     setActiveTab(id);
@@ -28,6 +27,7 @@ const Tabs = ({ tabs, hero }) => {
         {tabs.map((tab) => (
           <TabContent
             content={tab.titles}
+            label={tab.label}
             stats={hero}
             key={`${tab.id}-content`}
             isActive={tab.id === activeTab}

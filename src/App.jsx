@@ -39,6 +39,7 @@ function App() {
   const [name, setName] = useState("");
   const [allSuperheros, setAllSuperheros] = useState([]);
   const [superheroInfo, setSuperheroInfo] = useState(null);
+  console.log(superheroInfo.image);
 
   useEffect(() => {
     console.log("Use Effect is being invoked");
@@ -82,21 +83,22 @@ function App() {
           </form>
         </div>
         {/* end of app header */}
-        <div className="show-hero-container">
-          <div className="hero-content">
-            {/* thumbnail */}
-            <div className="hero-thumbnail">
-              <img src={Batman} alt="batman" />
-            </div>
+        {superheroInfo && (
+          <div className="show-hero-container">
+            <div className="hero-content">
+              {/* thumbnail */}
+              <div className="hero-thumbnail">
+                <img src={superheroInfo.image.url} alt={superheroInfo.name} />
+              </div>
 
-            <div className="hero-info-list">
-              <h2 className="name">Batman</h2>
+              <div className="hero-info-list">
+                <h2 className="name">{superheroInfo.name}</h2>
 
-              {/* tabs */}
-              {superheroInfo && <Tabs tabs={tabData} hero={superheroInfo} />}
+                <Tabs tabs={tabData} hero={superheroInfo} />
+              </div>
             </div>
           </div>
-        </div>
+        )}
       </div>
     </main>
   );
