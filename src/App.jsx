@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Tabs from "./components/Tabs";
 import Batman from "./assets/thumbnail-batman.jpg";
+import { fetchHero } from "./utils/fetchHeros";
 
 const tabData = [
   { id: 1, label: "powerstats" },
@@ -13,25 +14,22 @@ function App() {
   const [name, setName] = useState("");
   const [allSuperheros, setAllSuperheros] = useState([]);
   const [superheroInfo, setSuperheroInfo] = useState(null);
+  console.log(superheroInfo);
+
+  useEffect(() => {
+    (async () => {
+      const data = await fetchHero("batman");
+      console.log(data);
+
+      setSuperheroInfo(data.results[0]);
+    })();
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    try {
-      const response = await fetch(
-        `${import.meta.env.VITE_BASE_URL}/${
-          import.meta.env.VITE_SECRET_KEY
-        }/search/${name}`,
-      );
-      const data = await response.json();
-
-      if (data.response === "success") {
-        setAllSuperheros(data.results);
-        setSuperheroInfo(data.results[0]);
-      }
-    } catch (err) {
-      console.log(err);
-    }
+    // fetch hero by search query
+    const results = await fetchHero(name);
+    console.log(results);
   };
 
   return (
