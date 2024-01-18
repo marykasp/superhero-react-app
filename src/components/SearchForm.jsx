@@ -2,7 +2,7 @@ import React from "react";
 
 const SearchForm = ({ handleSubmit, handleSetName, name }) => {
   return (
-    <form>
+    <form className="search-form-header">
       <input
         className="form-control"
         type="text"
@@ -15,6 +15,12 @@ const SearchForm = ({ handleSubmit, handleSetName, name }) => {
         {/* react icons*/}
         Search
       </button>
+      <div className="search-list" id="search-list">
+        {/* <div className="search-list-item">
+          <img src="" alt="" />
+          <p>Batman</p>
+        </div> */}
+      </div>
     </form>
   );
 };
