@@ -6,7 +6,7 @@
   --dark-color: #0a0a0a;
   --light-color: #fff;
   --grey-color: #505050;
-  --primary-color: #19ed55;
+  --primary-color: #b7c9e2;
   --yellow-color: #f2c10e;
 }
 
@@ -72,6 +72,17 @@ main {
   min-height: 100vh;
 }
 
+#container {
+  max-width: 1280px;
+  width: 100%;
+  margin: 0 auto;
+  background-color: var(--dark-color);
+  margin: 2rem;
+  padding: 5rem;
+  border-radius: 6px;
+  color: var(--light-color);
+}
+
 /* HEADER */
 .header {
   display: flex;
@@ -89,7 +100,6 @@ main {
 }
 
 /* Search Form */
-
 .form-control {
   min-width: 420px;
   color: var(--light-color);
@@ -104,17 +114,7 @@ main {
   border-radius: 6px;
 }
 
-#container {
-  max-width: 1280px;
-  width: 100%;
-  margin: 0 auto;
-  background-color: var(--dark-color);
-  margin: 2rem;
-  padding: 5rem;
-  border-radius: 6px;
-  color: var(--light-color);
-}
-
+/* Main Content with Tabs and Image */
 .show-hero-container {
   /* margin-top: 4rem; */
   height: 500px;
