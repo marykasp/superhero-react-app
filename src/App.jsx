@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Tabs from "./components/Tabs";
 import Batman from "./assets/thumbnail-batman.jpg";
 import SearchForm from "./components/SearchForm";
+import Sidebar from "./components/Sidebar";
 import { fetchHero } from "./utils/fetchHeros";
 
 const tabData = [
@@ -71,35 +72,38 @@ function App() {
 
   return (
     <main>
-      <div id="container">
-        <div className="header">
-          <h2 className="header-title">
-            Super<span>Hero.</span>
-          </h2>
-          <SearchForm
-            handleSubmit={handleSubmit}
-            handleSetName={setName}
-            name={name}
-          />
-        </div>
-        {/* end of app header */}
-        {superheroInfo && (
-          <div className="show-hero-container">
-            <div className="hero-content">
-              {/* thumbnail */}
-              <div className="hero-thumbnail">
-                <img src={superheroInfo.image.url} alt={superheroInfo.name} />
-              </div>
+      <Sidebar />
+      <section className="main-container">
+        <div id="container">
+          <div className="header">
+            <h2 className="header-title">
+              Super<span>Hero.</span>
+            </h2>
+            <SearchForm
+              handleSubmit={handleSubmit}
+              handleSetName={setName}
+              name={name}
+            />
+          </div>
+          {/* end of app header */}
+          {superheroInfo && (
+            <div className="show-hero-container">
+              <div className="hero-content">
+                {/* thumbnail */}
+                <div className="hero-thumbnail">
+                  <img src={superheroInfo.image.url} alt={superheroInfo.name} />
+                </div>
 
-              <div className="hero-content-list">
-                <h2 className="name">{superheroInfo.name}</h2>
+                <div className="hero-content-list">
+                  <h2 className="name">{superheroInfo.name}</h2>
 
-                <Tabs tabs={tabData} hero={superheroInfo} />
+                  <Tabs tabs={tabData} hero={superheroInfo} />
+                </div>
               </div>
             </div>
-          </div>
-        )}
-      </div>
+          )}
+        </div>
+      </section>
     </main>
   );
 }
