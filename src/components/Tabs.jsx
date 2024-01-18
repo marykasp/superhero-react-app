@@ -28,7 +28,7 @@ const Tabs = ({ tabs, hero }) => {
           <TabContent
             content={tab.titles}
             label={tab.label}
-            stats={hero}
+            stats={hero[tab.label]}
             key={`${tab.id}-content`}
             isActive={tab.id === activeTab}
           />
