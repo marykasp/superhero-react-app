@@ -52,6 +52,34 @@ img {
   display: block;
 }
 
+/* HEADER */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+
+.header .header-title span {
+  color: var(--primary-color);
+}
+
+/* Search Form */
+
+.form-control {
+  min-width: 420px;
+  color: var(--light-color);
+}
+
+.search-btn {
+  color: var(--grey-color);
+  font-size: 1.6rem;
+  cursor: pointer;
+  background-color: var(--primary-color);
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+}
+
 #container {
   max-width: 1280px;
   width: 100%;
@@ -63,6 +91,7 @@ img {
   color: var(--light-color);
 }
 
+/* HERO CONTENT */
 .hero-content {
   display: grid;
   grid-template-columns: 2fr 3fr;
