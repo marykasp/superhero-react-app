@@ -6,7 +6,7 @@
   --dark-color: #0a0a0a;
   --light-color: #fff;
   --grey-color: #505050;
-  --primary-color: #32c75d;
+  --primary-color: #19ed55;
 }
 
 /* Reset Styles */
@@ -26,11 +26,61 @@ body {
   font-size: 1.5rem; /* 15px */
   min-height: 100vh;
   background-color: var(--primary-color);
+  /* background: linear-gradient(169deg, #f64445 0%, #611cac 100%); */
   line-height: 1.6;
   font-family: var(--default-font);
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+button,
+input {
+  font-family: inherit;
+  outline: 0;
+  border: none;
+  background-color: transparent;
+  font-size: 1.6rem;
+}
+
+li {
+  list-style: none;
+}
+
+img {
+  width: 100%;
+  display: block;
+}
+
+#container {
+  max-width: 1280px;
+  width: 100%;
+  margin: 0 auto;
+  background-color: var(--dark-color);
+  margin: 2rem;
+  padding: 5rem;
+  border-radius: 6px;
+  color: var(--light-color);
+}
+
+.hero-content {
+  display: grid;
+  grid-template-columns: 2fr 3fr;
+  margin-right: 2rem;
+}
+
+.hero-content .hero-thumbnail {
+  width: 100%;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.hero-content-list .name {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 3.4rem;
+  margin-top: -1.2rem;
+  font-weight: 500;
 }
 
 /* TABS */

@@ -91,7 +91,7 @@ function App() {
                 <img src={superheroInfo.image.url} alt={superheroInfo.name} />
               </div>
 
-              <div className="hero-info-list">
+              <div className="hero-content-list">
                 <h2 className="name">{superheroInfo.name}</h2>
 
                 <Tabs tabs={tabData} hero={superheroInfo} />
