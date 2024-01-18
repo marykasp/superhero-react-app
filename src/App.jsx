@@ -64,6 +64,10 @@ function App() {
     e.preventDefault();
     // fetch hero by search query
     const results = await fetchHero(name);
+    // save first result to state
+    if (results.response === "success") {
+      setSuperheroInfo(results.results[0]);
+    }
     console.log(results);
 
     // after search clear name in input

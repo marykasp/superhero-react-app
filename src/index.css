@@ -7,6 +7,7 @@
   --light-color: #fff;
   --grey-color: #505050;
   --primary-color: #19ed55;
+  --yellow-color: #f2c10e;
 }
 
 /* Reset Styles */
@@ -157,12 +158,34 @@ main {
 }
 
 /* TABS */
+.tabs-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+  padding-bottom: 1.6rem;
+  margin-block-start: 2rem;
+  margin-block-end: 2.4rem;
+  color: var(--light-color);
+}
 .tab {
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+  font-weight: 400;
+  font-size: 1.7rem;
   cursor: pointer;
+  color: #fff;
+  transition: all 300ms ease-in-out;
+}
+
+.tab:hover {
+  opacity: 0.9;
 }
 
 .tab.active {
-  color: red;
+  color: var(--primary-color);
 }
 
 .tab-content {
@@ -171,4 +194,34 @@ main {
 
 .tab-content.active {
   display: block;
+}
+
+/* POWERSTATS INFO */
+.powerstats li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1.2rem auto;
+  padding: 1.2rem;
+}
+
+.powerstats li div span {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  border-radius: 7px;
+  padding: 0 1.2rem;
+  margin: 0 1.6rem;
+  opacity: 0.6;
+  font-size: 1.7rem;
+}
+
+.powerstats li > span {
+  background-color: #212121;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-content: center;
+  font-weight: 700;
+  color: var(--yellow-color);
 }
