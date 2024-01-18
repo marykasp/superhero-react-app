@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Tabs from "./components/Tabs";
 import Batman from "./assets/thumbnail-batman.jpg";
+import SearchForm from "./components/SearchForm";
 import { fetchHero } from "./utils/fetchHeros";
 
 const tabData = [
@@ -33,13 +34,17 @@ const tabData = [
     label: "appearance",
     titles: ["gender", "race", "height", "weight", "eye-color", "hair-color"],
   },
+  {
+    id: 4,
+    label: "connections",
+    titles: ["group-affiliation", "relatives"],
+  },
 ];
 
 function App() {
   const [name, setName] = useState("");
   const [allSuperheros, setAllSuperheros] = useState([]);
   const [superheroInfo, setSuperheroInfo] = useState(null);
-  console.log(superheroInfo.image);
 
   useEffect(() => {
     console.log("Use Effect is being invoked");
@@ -54,10 +59,14 @@ function App() {
   }, []);
 
   const handleSubmit = async (e) => {
+    console.log(`Name set by input: ${name}`);
     e.preventDefault();
     // fetch hero by search query
     const results = await fetchHero(name);
     console.log(results);
+
+    // after search clear name in input
+    setName("");
   };
 
   return (
@@ -67,20 +76,11 @@ function App() {
           <h2 className="header-title">
             Super<span>Hero.</span>
           </h2>
-          <form>
-            <input
-              className="form-control"
-              type="text"
-              placeholder="Search for a superhero..."
-              name="search"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-            />
-            <button className="search-btn" onClick={handleSubmit}>
-              {/* react icons*/}
-              Search
-            </button>
-          </form>
+          <SearchForm
+            handleSubmit={handleSubmit}
+            handleSetName={setName}
+            name={name}
+          />
         </div>
         {/* end of app header */}
         {superheroInfo && (
